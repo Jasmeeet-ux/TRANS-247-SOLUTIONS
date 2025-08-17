@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reliability - Trans 247 Solutions</title>
+  <style>
+    /* Reuse all the styles from index.html */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f5f5;
+      --primary-blue: #1f4e79;
+      --secondary-green: #9aa322;
+    }
+
+    /* NAVIGATION BAR */
+    .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 15px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #9aa322 0%, #7a8a1a 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-main {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1f4e79;
+      line-height: 1;
+    }
+
+    .logo-sub {
+      font-size: 12px;
+      color: #9aa322;
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #1f4e79;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      background: rgba(31, 78, 121, 0.1);
+      color: #9aa322;
+    }
+
+    .nav-links a.active {
+      color: #9aa322;
+      font-weight: 600;
+    }
+
+    .nav-links a.cta {
+      background: #9aa322;
+      color: white;
+      font-weight: 600;
+    }
+
+    .nav-links a.cta:hover {
+      background: #8a9420;
+      color: white;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .inner-wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* RELIABILITY HERO SECTION */
+    .reliability-hero {
+      background: linear-gradient(135deg, rgba(31, 78, 121, 0.8) 0%, rgba(45, 95, 143, 0.8) 100%),
+                  url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&h=400&fit=crop') center/cover;
+      color: white;
+      padding: 180px 0 100px 0;
+      text-align: center;
+      position: relative;
+      margin-bottom: 60px;
+    }
+
+    .reliability-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(31, 78, 121, 0.7) 0%, rgba(45, 95, 143, 0.7) 100%);
+      z-index: -1;
+    }
+
+    .reliability-hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    }
+
+    .reliability-hero p {
+      font-size: 1.5rem;
+      opacity: 0.95;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* RELIABILITY SECTIONS */
+    .reliability-section {
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .reliability-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .reliability-section h2 {
+      font-size: 1.8rem;
+      color: var(--primary-blue);
+      margin-bottom: 20px;
+      font-weight: 700;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .reliability-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--secondary-green);
+    }
+
+    .reliability-section p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+
+    .reliability-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+
+    .reliability-section li {
+      background: #f9f9f9;
+      margin: 10px 0;
+      padding: 15px 20px;
+      border-left: 4px solid var(--secondary-green);
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .reliability-section li:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .note {
+      font-size: 0.9rem;
+      color: #777;
+      font-style: italic;
+      margin-top: 30px;
+    }
+
+    /* Mobile Hamburger Menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: #1f4e79;
+      transition: 0.3s;
+    }
+
+    /* Footer Styles */
+    .footer {
+      font-family: Arial, sans-serif;
+      background-color: #1f4e79;
+      color: #f0f0f0;
+      padding: 20px 0 10px 0;
+      border-top: 3px solid #9aa322;
+    }
+
+    .footer-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-main-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .footer-company {
+      flex: 1;
+      white-space: normal;
+      font-size: 15px;
+      font-weight: 600;
+      color: #d4e0f0;
+      min-width: 250px;
+    }
+    .footer-company strong {
+      color: #e6e6e6;
+    }
+
+    .footer-links {
+      display: flex;
+      flex: 2;
+      gap: 40px;
+      justify-content: space-between;
+      min-width: 400px;
+    }
+
+    .footer-column {
+      display: block;
+      white-space: normal;
+      min-width: 140px;
+      flex: 1;
+    }
+    .footer-column h3 {
+      font-size: 16px;
+      margin-bottom: 12px;
+      color: #9aa322;
+      border-bottom: 1px solid #567a9f;
+      padding-bottom: 6px;
+    }
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-column li {
+      margin-bottom: 7px;
+    }
+    .footer-column a {
+      color: #cbd4e4;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+    .footer-column a:hover,
+    .footer-column a:focus {
+      color: #d7dd86;
+      outline: none;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 12px;
+      margin-top: 15px;
+      padding-top: 18px;
+      border-top: 1px solid #385671;
+      color: #a5b3d1;
+    }
+    .footer-bottom p {
+      margin: 4px 0;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 900px) {
+      .footer-container {
+        max-width: 100%;
+        padding: 0 10px;
+      }
+      .footer-main-row {
+        flex-direction: column;
+        gap: 25px;
+      }
+      .footer-links {
+        gap: 25px;
+        min-width: auto;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        gap: 0;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 12px 16px;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .reliability-hero {
+        padding: 150px 0 80px 0;
+      }
+
+      .reliability-hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .reliability-hero p {
+        font-size: 1.2rem;
+      }
+
+      .reliability-section {
+        padding: 30px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .footer-company {
+        min-width: auto;
+        font-size: 14px;
+      }
+      .footer-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 20px;
+        min-width: auto;
+      }
+      .footer-column {
+        min-width: 120px;
+        flex: none;
+      }
+
+      .reliability-hero h1 {
+        font-size: 2rem;
+      }
+
+      .reliability-section {
+        padding: 25px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Scroll Progress Bar (ADD THIS) -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <div class="logo-icon">T247</div>
+        <div class="logo-text">
+          <div class="logo-main">Trans 247 Solutions</div>
+          <div class="logo-sub">Medical Transcription Services</div>
+        </div>
+      </div>
+      
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#technology">Technology</a></li>
+        <li><a href="reliability.html" class="active">Reliability</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- RELIABILITY HERO SECTION -->
+  <section class="reliability-hero">
+    <div class="container">
+      <h1>Our Reliability Commitment</h1>
+      <p>Simplicity is prerequisite for reliability in medical transcription</p>
+    </div>
+  </section>
+
+  <!-- RELIABILITY CONTENT -->
+  <main class="reliability-main">
+    <div class="inner-wrap">
+      <section class="reliability-section">
+        <h2>SECURITY AND PRIVACY</h2>
+        <p>We operate on a secure Intranet with user specific passwords, SSL (Secure Socket Layer) via https transport, and 128-bit encryption of all audio and text files. Software used is PIPEDA/HIPAA compliant and supports requirements of HCFA internet use.</p>
+      </section>
+
+      <section class="reliability-section">
+        <h2>ACCURACY/QUALITY</h2>
+        <p>Our three-tier quality check ensures very high accuracy. A three-level quality audit includes:</p>
+        <ul>
+          <li>MT with Proof Reading</li>
+          <li>Editors (including proof readers)</li>
+          <li>Quality Assurance</li>
+        </ul>
+      </section>
+
+      <section class="reliability-section">
+        <h2>TOTAL VISIBILITY & JOB TRACKING</h2>
+        <p>The administrator has complete visibility of the status of each job through the transcription process. The audit track allows showing user, time, and status change of the jobs, plus the ability to automatically update the priority of any job.</p>
+      </section>
+
+      <section class="reliability-section">
+        <h2>e-FILING CABINET</h2>
+        <p>As the documents are transcribed, they become available to any authorized user for proper printing and distribution. One can easily locate documents searching by name or reference. This system can be used as a temporary or long term online repository of documents.</p>
+      </section>
+
+      <section class="reliability-section">
+        <h2>FINANCIAL ACCOUNTABILITY</h2>
+        <p>The bills generated reflect an accurate count of the lines, characters, or pages and follow the agreed contractual criteria of counting.</p>
+      </section>
+
+      <section class="reliability-section">
+        <h2>NO CAPITAL INVESTMENT</h2>
+        <p>Absolutely no investment on your part.</p>
+      </section>
+
+      <section class="reliability-section">
+        <h2>LOW COST</h2>
+        <p>We offer full transcription as a utility service billed by the minute of dictation or transcribed line. Digital recorders can be either purchased or provided at no cost with a three-year subscription agreement. You can save an estimated 20% of your current in-house or outsourced transcription costs by increasing productivity instead of compromising quality.</p>
+      </section>
+
+      <section class="reliability-section">
+        <h2>FREE TRIAL OFFER*</h2>
+        <p>We offer a 7-day (or 1000 lines) free trial period. Following consultation with one of our representatives regarding your needs, you can use our service absolutely free for 7 days or 1000 lines whichever comes first. There is no setup cost involved.</p>
+      </section>
+
+      <section class="reliability-section">
+        <h2>BILLS</h2>
+        <p>We price using Microsoft Word Count (found in Tools Menu). We count the number of characters with spaces, divided by 65 (characters per line) and multiply by our rates per line. It helps us maintain a standard size of each line which is based on 65 characters.</p>
+      </section>
+
+      <section class="reliability-section">
+        <h2>RATES</h2>
+        <p>Generally Transcription rates depend on the dictation volumes and Turn-around time (TAT) of 24 hours. For actual rates, kindly get in touch with us live or at info@trans247solutions.com.</p>
+        <p class="note">*Conditions apply. Please contact us for information.</p>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-main-row">
+        <div class="footer-company">
+          <span class="company-line">
+            <strong>Canadian Corporation</strong>&nbsp;
+            Trans 247 Solutions Inc.&nbsp;
+            Burlington, Ontario, Canada&nbsp;ABOUT SSL CERTIFICATES
+          </span>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column">
+            <h3>Pages</h3>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#about">About</a></li>
+              <li><a href="reliability.html">Reliability</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Information</h3>
+            <ul>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Solutions</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Others</h3>
+            <ul>
+              <li><a href="index.html#contact">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Copyright Trans 247 Solutions Inc. All Rights Reserved.</p>
+        <p>Online</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('active');
+    }
+
+    // Close menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('active');
+      });
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+  <script src="js/animations.js" defer></script>
+</body>
+</html>

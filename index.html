@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trans 247 Solutions - Medical Transcription Services</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f5f5;
+      --primary-blue: #1f4e79;
+      --secondary-green: #9aa322;
+    }
+
+    /* NAVIGATION BAR */
+    .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 15px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #9aa322 0%, #7a8a1a 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-main {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1f4e79;
+      line-height: 1;
+    }
+
+    .logo-sub {
+      font-size: 12px;
+      color: #9aa322;
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #1f4e79;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      background: rgba(31, 78, 121, 0.1);
+      color: #9aa322;
+    }
+
+    .nav-links a.cta {
+      background: #9aa322;
+      color: white;
+      font-weight: 600;
+    }
+
+    .nav-links a.cta:hover {
+      background: #8a9420;
+      color: white;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .inner-wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* HERO SECTION - Updated with slider */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero-slider {
+      display: flex;
+      transition: transform 0.5s ease;
+      height: 100vh;
+    }
+
+    .hero-slide {
+      min-width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-slide::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(31, 78, 121, 0.7) 0%, rgba(45, 95, 143, 0.7) 100%);
+      z-index: 1;
+    }
+
+    .hero-slide-1 {
+      background-image: url('https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=1920&h=1080&fit=crop&crop=right');
+    }
+
+    .hero-slide-2 {
+      background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1920&h=1080&fit=crop');
+    }
+
+    .hero-slide-3 {
+      background-image: url('https://images.unsplash.com/photo-1581056771107-24ca5f033842?w=1920&h=1080&fit=crop');
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+      padding: 0 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero-content h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+      line-height: 1.1;
+    }
+
+    .hero-content p {
+      font-size: 1.5rem;
+      margin-bottom: 40px;
+      opacity: 0.95;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: #9aa322;
+      color: white;
+      padding: 18px 40px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(154, 163, 34, 0.3);
+      text-shadow: none;
+    }
+
+    .cta-btn:hover {
+      background: #8a9420;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(154, 163, 34, 0.4);
+    }
+
+    /* Slider Navigation */
+    .slider-nav {
+      position: absolute;
+      bottom: 50px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .slider-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      margin: 0 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .slider-dot.active {
+      background: #9aa322;
+      transform: scale(1.2);
+    }
+
+    .slider-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(154, 163, 34, 0.7);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      font-size: 24px;
+      border: none;
+      transition: all 0.3s;
+    }
+
+    .slider-arrow:hover {
+      background: #9aa322;
+    }
+
+    .slider-arrow.prev {
+      left: 30px;
+    }
+
+    .slider-arrow.next {
+      right: 30px;
+    }
+
+    /* ABOUT SECTION */
+    #about {
+      background-color: #f5f5f5;
+      padding: 80px 0;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about h3 {
+      font-size: 2.5rem;
+      color: #1f4e79;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .about p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 30px;
+      line-height: 1.7;
+    }
+
+    .about ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .about li {
+      background: white;
+      margin: 10px 0;
+      padding: 12px 20px;
+      border-left: 4px solid #9aa322;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .about li:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .about img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    /* HOW IT WORKS */
+    .how-it-works {
+      background-color: #f5f5f5;
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .how-it-works h2 {
+      font-size: 2.5rem;
+      color: #1f4e79;
+      margin-bottom: 50px;
+      font-weight: 700;
+    }
+
+    .steps {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .step {
+      background: white;
+      padding: 30px 20px;
+      border-radius: 15px;
+      text-align: center;
+      min-width: 120px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .step:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .step svg {
+      margin-bottom: 15px;
+    }
+
+    .step p {
+      font-weight: 600;
+      color: #333;
+      font-size: 0.9rem;
+    }
+
+    .arrow {
+      color: #9aa322;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    /* TECHNOLOGY */
+    #technology {
+      background-color: #f5f5f5;
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    #technology h3 {
+      font-size: 2.5rem;
+      color: #1f4e79;
+      margin-bottom: 50px;
+      font-weight: 700;
+    }
+
+    .tech-left, .tech-right {
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      margin: 30px 0;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .tech-left:hover, .tech-right:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .tech-left img, .tech-right img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+    }
+
+    .tech-left h4, .tech-right h4 {
+      font-size: 1.5rem;
+      color: #1f4e79;
+      margin-bottom: 10px;
+    }
+
+    .tech-left p, .tech-right p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* RELIABILITY */
+    #reliability {
+      background-color: #f5f5f5;
+      padding: 80px 0;
+    }
+
+    .Reliable-wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .Reliable h3 {
+      font-size: 2.5rem;
+      color: #1f4e79;
+      margin-bottom: 50px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .reliability-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .reliability-features {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .reliableleft {
+      background: white;
+      display: flex;
+      align-items: center;
+      padding: 30px;
+      margin: 20px 0;
+      border-radius: 15px;
+      gap: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .reliableleft:hover {
+      transform: translateX(5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .reliableimg img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+    }
+
+    .reliableleft h4 {
+      font-size: 1.4rem;
+      color: #1f4e79;
+      margin-bottom: 10px;
+    }
+
+    .reliableleft p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .contact-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .contact-section h3 {
+      font-size: 2.5rem;
+      color: #1f4e79;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .contact-section p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 30px;
+      line-height: 1.7;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-item {
+      background: white;
+      display: flex;
+      align-items: flex-start;
+      padding: 20px;
+      border-radius: 10px;
+      gap: 20px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      border-left: 4px solid #9aa322;
+    }
+
+    .contact-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+
+    .contact-item svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .contact-item h4 {
+      font-size: 1.2rem;
+      color: #1f4e79;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    .contact-item p {
+      color: #666;
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .contact-section img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    /* TESTIMONIALS */
+    #testimonials {
+      background-color: #f5f5f5;
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .client-main h3 {
+      font-size: 2.5rem;
+      color: #1f4e79;
+      margin-bottom: 50px;
+      font-weight: 700;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .testimonial {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .testimonial:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .testimonial .pic img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      object-fit: cover;
+      border: 3px solid #9aa322;
+    }
+
+    .testimonial blockquote {
+      font-style: italic;
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .testimonial p {
+      color: #1f4e79;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .client-title {
+      color: #666;
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    /* REQUEST QUOTE */
+    .request {
+      background: linear-gradient(135deg, #1f4e79 0%, #2d5f8f 100%);
+      color: white;
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .request h3 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .request p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      opacity: 0.95;
+    }
+
+    .request a {
+      display: inline-block;
+      background: #9aa322;
+      color: white;
+      padding: 15px 35px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(154, 163, 34, 0.3);
+    }
+
+    .request a:hover {
+      background: #8a9420;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(154, 163, 34, 0.4);
+    }
+
+    /* Footer Styles */
+    .footer {
+      font-family: Arial, sans-serif;
+      background-color: #1f4e79;
+      color: #f0f0f0;
+      padding: 20px 0 10px 0;
+      border-top: 3px solid #9aa322;
+    }
+
+    .footer-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-main-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .footer-company {
+      flex: 1;
+      white-space: normal;
+      font-size: 15px;
+      font-weight: 600;
+      color: #d4e0f0;
+      min-width: 250px;
+    }
+    .footer-company strong {
+      color: #e6e6e6;
+    }
+
+    .footer-links {
+      display: flex;
+      flex: 2;
+      gap: 40px;
+      justify-content: space-between;
+      min-width: 400px;
+    }
+
+    .footer-column {
+      display: block;
+      white-space: normal;
+      min-width: 140px;
+      flex: 1;
+    }
+    .footer-column h3 {
+      font-size: 16px;
+      margin-bottom: 12px;
+      color: #9aa322;
+      border-bottom: 1px solid #567a9f;
+      padding-bottom: 6px;
+    }
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-column li {
+      margin-bottom: 7px;
+    }
+    .footer-column a {
+      color: #cbd4e4;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+    .footer-column a:hover,
+    .footer-column a:focus {
+      color: #d7dd86;
+      outline: none;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 12px;
+      margin-top: 15px;
+      padding-top: 18px;
+      border-top: 1px solid #385671;
+      color: #a5b3d1;
+    }
+    .footer-bottom p {
+      margin: 4px 0;
+    }
+
+    /* Mobile Hamburger Menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: #1f4e79;
+      transition: 0.3s;
+    }
+
+    /* Additional CSS for JavaScript enhancements */
+    .form-success {
+      background: #d4edda;
+      color: #155724;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .error-message {
+      color: #dc3545;
+      font-size: 0.8rem;
+      margin-top: 5px;
+    }
+
+    .invalid {
+      border-color: #dc3545 !important;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 900px) {
+      .footer-container {
+        max-width: 100%;
+        padding: 0 10px;
+      }
+      .footer-main-row {
+        flex-direction: column;
+        gap: 25px;
+      }
+      .footer-links {
+        gap: 25px;
+        min-width: auto;
+        flex-direction: column;
+      }
+      .contact-section {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        gap: 0;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 12px 16px;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      
+      .about {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .steps {
+        flex-direction: column;
+      }
+      
+      .arrow {
+        transform: rotate(90deg);
+      }
+      
+      .tech-left, .tech-right {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .reliableleft {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .slider-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+      }
+
+      .slider-arrow.prev {
+        left: 10px;
+      }
+
+      .slider-arrow.next {
+        right: 10px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .footer-company {
+        min-width: auto;
+        font-size: 14px;
+      }
+      .footer-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 20px;
+        min-width: auto;
+      }
+      .footer-column {
+        min-width: 120px;
+        flex: none;
+      }
+
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .hero-content p {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <div class="logo-icon">T247</div>
+        <div class="logo-text">
+          <div class="logo-main">Trans 247 Solutions</div>
+          <div class="logo-sub">Medical Transcription Services</div>
+        </div>
+      </div>
+      
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="reliability.html">Reliability</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION WITH SLIDER -->
+  <section class="hero-section">
+    <div class="hero-slider" id="heroSlider">
+      <!-- Slide 1 -->
+      <div class="hero-slide hero-slide-1">
+        <div class="hero-content">
+          <h1>Professional Medical Transcription Services</h1>
+          <p>Accurate, secure, and reliable transcription solutions for healthcare professionals worldwide</p>
+          <a href="#contact" class="cta-btn">Get Started Today</a>
+        </div>
+      </div>
+      
+      <!-- Slide 2 -->
+      <div class="hero-slide hero-slide-2">
+        <div class="hero-content">
+          <h1>24/7 Availability</h1>
+          <p>Our team works around the clock to deliver your transcriptions when you need them</p>
+          <a href="#contact" class="cta-btn">Request a Free Trial</a>
+        </div>
+      </div>
+      
+      <!-- Slide 3 -->
+      <div class="hero-slide hero-slide-3">
+        <div class="hero-content">
+          <h1>HIPAA Compliant Solutions</h1>
+          <p>Fully secure and compliant with all healthcare privacy regulations</p>
+          <a href="#contact" class="cta-btn">Learn More</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slider Navigation -->
+    <button class="slider-arrow prev" onclick="prevSlide()">&#10094;</button>
+    <button class="slider-arrow next" onclick="nextSlide()">&#10095;</button>
+    
+    <div class="slider-nav">
+      <div class="slider-dot active" onclick="goToSlide(0)"></div>
+      <div class="slider-dot" onclick="goToSlide(1)"></div>
+      <div class="slider-dot" onclick="goToSlide(2)"></div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="step">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#9aa322" viewBox="0 0 24 24">
+          <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm-7 8c0-2.7 5.3-4 7-4s7 1.3 7 4v2H5v-2z" />
+        </svg>
+        <p>Doctor's Dictation</p>
+      </div>
+
+      <span class="arrow">→</span>
+
+      <div class="step">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#9aa322" viewBox="0 0 24 24">
+          <path d="M12 14c1.7 0 3-1.3 3-3V5c0-1.7-1.3-3-3-3s-3 1.3-3 3v6c0 1.7 1.3 3 3 3zm4.3-3c0 2.4-1.9 4.3-4.3 4.3S7.7 13.4 7.7 11H6c0 3 2.2 5.5 5 6.1V20H9v2h6v-2h-2v-2.9c2.8-.6 5-3.1 5-6.1h-1.7z" />
+        </svg>
+        <p>Record</p>
+      </div>
+
+      <span class="arrow">→</span>
+
+      <div class="step">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#9aa322" viewBox="0 0 24 24">
+          <path d="M19 15v4H5v-4H3v6h18v-6h-2zM11 3v9.2l-3.6-3.6-1.4 1.4L12 16l6-6-1.4-1.4L13 12.2V3h-2z" />
+        </svg>
+        <p>Upload</p>
+      </div>
+
+      <span class="arrow">→</span>
+
+      <div class="step">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#9aa322" viewBox="0 0 24 24">
+          <path d="M12 12c2.2 0 4-1.8 4-4S14.2 4 12 4 8 5.8 8 8s1.8 4 4 4zm0 2c-2.7 0-8 1.3-8 4v2h16v-2c0-2.7-5.3-4-8-4z" />
+        </svg>
+        <p>Medical Transcription</p>
+      </div>
+
+      <span class="arrow">→</span>
+
+      <div class="step">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#9aa322" viewBox="0 0 24 24">
+          <path d="M5 20h14v-2H5v2zM11 3h2v10h3l-4 4-4-4h3V3z" />
+        </svg>
+        <p>Download Transcript</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT US -->
+  <section id="about">
+    <div class="inner-wrap">
+           <div class="about">
+        <div>
+          <h3>About Us</h3>
+          <p>We at Trans 247 Solutions conceptualized the idea of providing a simple and flexible solution to transcription. We have successfully integrated advancements in technology to transcription, enabling us to serve hospitals, clinics, group practices and individual practices. Trans 247 Solutions provides differentiated medical transcription using our confidential webpage or we can directly perform transcription from dictations on your company's portal. We have been providing medical transcription for all specialties.</p>
+    
+          
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=500&h=400&fit=crop" alt="About Trans 247 Solutions" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNOLOGY -->
+  <section id="technology">
+    <h3>Technology We Use</h3>
+    <div class="inner-wrap">
+      <div class="tech-left">
+        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#9aa322" viewBox="0 0 24 24">
+          <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.89 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+        </svg>
+        <div>
+          <h4>Secure Cloud Platform</h4>
+          <p>Our system ensures your files are encrypted and safely transmitted.</p>
+        </div>
+      </div>
+      <div class="tech-right">
+        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#9aa322" viewBox="0 0 24 24">
+          <path d="M17 2H7c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM7 4h10v12H7V4z"/>
+        </svg>
+        <div>
+          <h4>Mobile App Integration</h4>
+          <p>Dictate and upload on the go using our easy-to-use mobile app.</p>
+        </div>
+      </div>
+    </div>
+  </section>  <!-- RELIABILITY -->
+  <!-- Replace your reliability sections with this while loading -->
+<section class="reliability-section skeleton-loading skeleton"></section>
+  <section id="reliability">
+    <div class="Reliable-wrap">
+      <div class="Reliable">
+        <h3>Why Choose Us?</h3>
+        <div class="reliability-features">
+          <div class="reliableleft">
+            <div class="reliableimg">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="#9aa322" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+            </div>
+            <div>
+              <h4>No Risk - Free Trial</h4>
+              <p>Experience our services with a complete free trial period.</p>
+            </div>
+          </div>
+          <div class="reliableleft">
+            <div class="reliableimg">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="#9aa322" viewBox="0 0 24 24">
+                <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Competitive Pricing</h4>
+              <p>Affordable rates without compromising on quality and service.</p>
+            </div>
+          </div>
+          <div class="reliableleft">
+            <div class="reliableimg">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="#9aa322" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </div>
+            <div>
+              <h4>100% Guarantee</h4>
+              <p>Complete guarantee on both deadline and accuracy for all transcriptions.</p>
+            </div>
+          </div>
+          <div class="reliableleft">
+            <div class="reliableimg">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="#9aa322" viewBox="0 0 24 24">
+                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+              </svg>
+            </div>
+            <div>
+              <h4>All Specialties</h4>
+              <p>Medical transcription services for all medical specialties and fields.</p>
+            </div>
+          </div>
+          <div class="reliableleft">
+            <div class="reliableimg">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="#9aa322" viewBox="0 0 24 24">
+                <path d="M12 2C8.13 2 5-5.13 5-9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Canadian Owned & Operated</h4>
+              <p>Proudly Canadian company providing worldwide transcription services.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT US -->
+  <section id="contact">
+    <div class="inner-wrap">
+      <div class="contact-section">
+        <div class="contact-content">
+          <h3>Contact Us</h3>
+          <p>Get in touch with our team for all your medical transcription needs.</p>
+          <div class="contact-info">
+            <div class="contact-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#1f4e79" viewBox="0 0 24 24">
+                <path d="M21.99 4c0-1.1-.89-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.89 2 2 2h14l4 4-.01-18zM18 14H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+              </svg>
+              <div>
+                <h4>Company Name</h4>
+                <p>Trans 247 Solutions</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#1f4e79" viewBox="0 0 24 24">
+                <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-1 16H9V7h9v14z"/>
+              </svg>
+              <div>
+                <h4>Contact Person</h4>
+                <p>Dr. Michael Anderson<br>Business Development Manager</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#1f4e79" viewBox="0 0 24 24">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
+              <div>
+                <h4>Phone</h4>
+                <p>+1 (647) 555-0247<br>Toll Free: 1-800-TRANS47</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#1f4e79" viewBox="0 0 24 24">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+              </svg>
+              <div>
+                <h4>Email</h4>
+                <p>info@trans247solutions.com<br>support@trans247solutions.com</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#1f4e79" viewBox="0 0 24 24">
+                <path d="M12 2C8.13 2 5-5.13 5-9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+              <div>
+                <h4>Location</h4>
+                <p>Burlington, Ontario, Canada<br>Serving clients worldwide</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=500&h=500&fit=crop" alt="Contact Trans 247 Solutions" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="client-main">
+      <h3>What Our Clients Say</h3>
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <div class="pic">
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=80&h=80&fit=crop&crop=face" alt="Dr. Sarah Johnson" />
+          </div>
+          <blockquote>
+            "Trans 247 Solutions has been a game-changer for our clinic. Accurate, fast, and reliable service that we can always count on."
+          </blockquote>
+          <p>- Dr. Sarah Johnson</p>
+          <span class="client-title">Family Medicine Physician</span>
+        </div>
+        
+        <div class="testimonial">
+          <div class="pic">
+            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=80&h=80&fit=crop&crop=face" alt="Dr. Robert Chen" />
+          </div>
+          <blockquote>
+            "The accuracy and turnaround time exceeded our expectations. HIPAA compliance gives us complete peace of mind."
+          </blockquote>
+          <p>- Dr. Robert Chen</p>
+          <span class="client-title">Cardiology Specialist</span>
+        </div>
+        
+        
+        
+        <div class="testimonial">
+          <div class="pic">
+            <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=80&h=80&fit=crop&crop=face" alt="Dr. Michael Thompson" />
+          </div>
+          <blockquote>
+            "The mobile app makes dictation so convenient. Quality transcriptions delivered exactly when promised."
+          </blockquote>
+          <p>- Dr. Michael Thompson</p>
+          <span class="client-title">Orthopedic Surgeon</span>
+        </div>
+  
+        
+    </div>
+  </section>
+
+  <!-- REQUEST QUOTE -->
+  <section class="request">
+    <div class="container">
+      <h3>Ready to Get Started?</h3>
+      <p>Contact us today for a free trial and experience our services firsthand.</p>
+      <a href="#contact">Get Free Quote</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-main-row">
+        <div class="footer-company">
+          <span class="company-line">
+            <strong>Canadian Corporation</strong>&nbsp;
+            Trans 247 Solutions Inc.&nbsp;
+            Burlington, Ontario, Canada&nbsp;ABOUT SSL CERTIFICATES
+          </span>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column">
+            <h3>Pages</h3>
+            <ul>
+              <li><a href="#about">Home</a></li>
+              <li><a href="reliability.html">Reliability</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Information</h3>
+            <ul>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Solutions</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Others</h3>
+            <ul>
+              <li><a href="#contact">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Copyright Trans 247 Solutions Inc. All Rights Reserved.</p>
+        <p>Online</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Slider Functionality -->
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.slider-dot');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+      if (index >= totalSlides) {
+        currentSlide = 0;
+      } else if (index < 0) {
+        currentSlide = totalSlides - 1;
+      } else {
+        currentSlide = index;
+      }
+      
+      const slider = document.getElementById('heroSlider');
+      slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+      
+      // Update dots
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+      });
+    }
+
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      showSlide(currentSlide - 1);
+    }
+
+    function goToSlide(index) {
+      showSlide(index);
+    }
+
+    // Auto slide change every 5 seconds
+    setInterval(nextSlide, 5000);
+
+    // Mobile menu toggle
+    function toggleMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('active');
+    }
+
+    // Close menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('active');
+      });
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Load more testimonials functionality
+    document.querySelector('.load-more-testimonials').addEventListener('click', function() {
+      // In a real implementation, this would fetch more testimonials from a server
+      alert('Loading more testimonials... This would fetch additional content in a production environment.');
+    });
+  </script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-XXXXX-Y');
+  </script>
+</body>
+</html>
+
+<!-- Replace your reliability sections with this while loading -->
+<section class="reliability-section skeleton-loading skeleton"></section>
